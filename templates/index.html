@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Encuesta de Autocuidado</title>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Encuesta de Autocuidado</h1>
+    <p class="muted">Regístrate e inicia sesión para responder y ver estadísticas</p>
+  </header>
+
+  <main class="container">
+    <!-- Definición, gráfico, video y collage -->
+    <section class="media card">
+      <div class="media-left">
+        <h2>Definición</h2>
+        <img src="/static/images/definition.png" alt="Definición" class="media-img">
+        <h3>Gráfico</h3>
+        <img src="/static/images/graph.png" alt="Gráfico" class="media-img">
+      </div>
+      <div class="media-right">
+        <h3>Video</h3>
+        <video controls class="media-video" src="/static/images/invideo-ai-1080 Tu mejor tú en 60s_ Autocuidado 5 en 1 2025-10-27.mp4">Tu navegador no soporta video</video>
+        <h3>Collage</h3>
+        <div class="collage">
+          <img src="/static/images/post de instagram dia del amigo collage blanco.jpg" alt="c1">
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Mapa interactivo -->
+    <section class="map card">
+      <h2>Mapa interactivo del autocuidado</h2>
+      <svg id="autocare-map" viewBox="0 0 800 300" class="map-svg">
+        <rect x="0" y="0" width="800" height="300" rx="12" fill="#f8fbff"/>
+        <g class="map-area" data-area="Físico" data-action="Camina 30 minutos; atención a sueño y alimentación.">
+          <rect x="20" y="30" width="200" height="100" rx="8" fill="#e6f7ff" stroke="#4aa3ff"/>
+          <text x="120" y="90" text-anchor="middle" fill="#044a7c" font-size="16">Físico</text>
+        </g>
+        <g class="map-area" data-area="Emocional" data-action="Habla con alguien de confianza o busca apoyo profesional.">
+          <rect x="260" y="30" width="200" height="100" rx="8" fill="#fff0f0" stroke="#ff6b6b"/>
+          <text x="360" y="90" text-anchor="middle" fill="#7a1b1b" font-size="16">Emocional</text>
+        </g>
+        <g class="map-area" data-area="Mental" data-action="Practica técnicas de atención plena y organiza tu tiempo.">
+          <rect x="500" y="30" width="280" height="100" rx="8" fill="#f7fff0" stroke="#8fc24b"/>
+          <text x="640" y="90" text-anchor="middle" fill="#35621a" font-size="16">Mental</text>
+        </g>
+        <g class="map-area" data-area="Social" data-action="Participa en grupos y mantén contacto con amigos/familia.">
+          <rect x="120" y="160" width="260" height="100" rx="8" fill="#fff8e6" stroke="#ffb547"/>
+          <text x="250" y="220" text-anchor="middle" fill="#7a4a00" font-size="16">Social</text>
+        </g>
+        <g class="map-area" data-area="Espiritual" data-action="Dedica tiempo a reflexión, meditación o conexión con valores.">
+          <rect x="420" y="160" width="360" height="100" rx="8" fill="#f3f0ff" stroke="#9277ff"/>
+          <text x="600" y="220" text-anchor="middle" fill="#3b2b6b" font-size="16">Espiritual</text>
+        </g>
+      </svg>
+      <div id="map-action" class="map-action hidden"></div>
+    </section>
+
+    <!-- Autenticación -->
+    <section class="auth card">
+      <h2>Cuenta</h2>
+      <div id="not-logged">
+        <input id="registerEmail" placeholder="Correo">
+        <input id="registerPassword" type="password" placeholder="Contraseña">
+        <div class="row">
+          <button id="btn-register" class="btn">Registrar</button>
+          <button id="btn-show-login" class="btn outline">Iniciar sesión</button>
+        </div>
+      </div>
+      <div id="login-form" class="hidden">
+        <input id="loginEmail" placeholder="Correo">
+        <input id="loginPassword" type="password" placeholder="Contraseña">
+        <div class="row">
+          <button id="btn-login" class="btn">Entrar</button>
+          <button id="btn-cancel-login" class="btn outline">Cancelar</button>
+        </div>
+      </div>
+      <div id="logged-in" class="hidden">
+        <p id="logged-as" class="muted"></p>
+        <button id="btn-logout" class="btn outline">Cerrar sesión</button>
+      </div>
+    </section>
+
+    <!-- Encuesta -->
+    <section class="survey card hidden" id="survey-card">
+      <h2>Encuesta de Autocuidado</h2>
+      <p class="muted">Responde las 20 preguntas — edad requerida para análisis</p>
+      <label>Edad: <input id="edad" type="number" min="10" max="120" required></label>
+      <div id="survey-questions"></div>
+      <div class="row">
+        <button id="btn-submit" class="btn">Enviar encuesta</button>
+      </div>
+      <div id="survey-result" class="result-box hidden"></div>
+    </section>
+
+    <!-- Estadísticas -->
+    <section class="stats card">
+      <h2>Estadísticas</h2>
+      <div id="stats-summary" class="muted">Necesitas registrarte e iniciar sesión para ver estadísticas globales</div>
+      <div class="charts">
+        <canvas id="graficoNivel"></canvas>
+        <canvas id="graficoEdad"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Hecho por Justin DW &copy; 2025
+  </footer>
+
+ <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
