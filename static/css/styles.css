@@ -1,0 +1,44 @@
+/* styles.css: coloca en /static/styles.css */
+:root{
+  --accent:#4A90E2;
+  --muted:#6b7280;
+  --card:#fff;
+  --bg:#f5f8ff;
+}
+*{box-sizing:border-box}
+body{font-family:Inter,system-ui,Arial; margin:0; background:var(--bg); color:#111}
+header{background:var(--accent); color:white; padding:18px 20px}
+header h1{margin:0;font-size:20px}
+header .muted{opacity:0.9;font-size:13px}
+
+.container{max-width:1000px;margin:20px auto;padding:12px}
+.card{background:var(--card); border-radius:12px; padding:16px; box-shadow:0 6px 18px rgba(15,30,60,0.06); margin-bottom:16px}
+.media{display:flex;gap:12px}
+.media-left,.media-right{flex:1}
+.media-img{width:100%; height:auto; border-radius:8px; margin-bottom:8px}
+.media-video{width:100%;border-radius:8px}
+
+.collage img{width:100%; object-fit:cover; border-radius:6px}
+
+/* Map */
+.map-svg{width:100%; height:auto; margin-top:10px}
+.map-action{padding:10px;margin-top:8px;background:#f0f8ff;border-radius:10px}
+
+/* Auth / survey */
+input{padding:10px;border-radius:8px;border:1px solid #e6eefc;width:100%;margin-bottom:8px}
+.row{display:flex; gap:8px}
+.btn{background:var(--accent); color:white; border:none; padding:10px 12px; border-radius:8px; cursor:pointer}
+.btn.outline{background:white;color:var(--accent); border:1px solid var(--accent)}
+.hidden{display:none}
+.muted{color:var(--muted)}
+
+.survey-question{padding:8px;border-bottom:1px solid #f0f3fa;margin-bottom:6px}
+.options{display:flex;gap:8px;flex-wrap:wrap}
+.option-btn{padding:8px;border-radius:8px;border:1px solid #e6eefc;background:white;cursor:pointer}
+.option-btn.selected{background:var(--accent); color:white; border-color:transparent}
+
+/* Result + charts */
+.result-box{padding:12px;border-radius:8px;margin-top:12px;background:#f3f8ff}
+.charts{display:flex;gap:12px;flex-wrap:wrap}
+canvas{background:white;border-radius:8px;padding:8px;box-shadow:0 4px 8px rgba(0,0,0,0.03)}
+footer{padding:12px;text-align:center;color:var(--muted)}
